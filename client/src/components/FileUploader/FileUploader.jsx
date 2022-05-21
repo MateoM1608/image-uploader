@@ -1,23 +1,44 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import {saveImage} from '../../redux/actions/index'
+import { Link } from 'react-router-dom';
+import swal from 'sweetalert'
 import '../Uploader/Uploader.css'
 import imageIcon from '../../image/icon-successfully.JPG'
 
 const FileUploader = () =>{
 
+    const dispatch  = useDispatch()
     const Image = useSelector(state => state.image)
+    
+    const hadlerClick = () =>{
+        dispatch(saveImage(Image))
+        swal("Good job!", "Your image has been saved!", "success");
+    }
 
     return(
-        <div className="Home">
+        <div>
+            
+            <div className='Divbuttons'>
+                <Link style={{textDecoration:"none"}} to="/">
+                    <button className='button'>BACK</button>
+                </Link>
+                <Link style={{textDecoration:"none"}} to="/">
+                    <button className='button'>GALERY</button>
+                </Link>
+            </div>
+            <div className="Home ">
             <div className='uploader'>
                 <img className="icon" src={imageIcon} alt="img"/>
                 <h1 className="title-upload" >Uploaded Successfully!</h1>
                 <img className="imgSuccesfully" src={Image} alt="img"/>  
-                <button className='buttonSave'>
+                <button className='buttonSave' onClick={hadlerClick}>
                     Save Image
                 </button>
             </div>
         </div>
+        </div>
+        
         
     )
 }

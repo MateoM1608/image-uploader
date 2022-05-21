@@ -2,6 +2,7 @@ import React ,{ useState} from "react";
 import { useDispatch } from "react-redux";
 import {generetImage} from '../../redux/actions/index'
 import {useHistory} from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import '../Uploader/Uploader.css'
 import image from '../../image/image_uploader.JPG'
 
@@ -23,7 +24,16 @@ const Uploader = () => {
     
 
     return(
-        <div className="Home">
+        <div>
+            <div className='Divbuttons'>
+                <Link style={{textDecoration:"none", visibility:"hidden"}} to="/">
+                    <button className='button'>GALERY</button>
+                </Link>
+                <Link style={{textDecoration:"none"}} to="/">
+                    <button className='button'>GALERY</button>
+                </Link>
+            </div>
+            <div className="Home">
             <div className="uploader">
                 <h1 className="title-upload">Upload your image</h1>
                 <p className="txt_be">File should be Jpeg, Png...</p>
@@ -36,7 +46,9 @@ const Uploader = () => {
                 </div>
                 {/* <img src={imageSrc} alt="img"/> */}
             </div>
+            </div>
         </div>
+        
         
     )
 }
